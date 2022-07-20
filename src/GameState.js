@@ -134,7 +134,7 @@ class GameState extends React.Component {
             blurb: "Monster Coder (P)",
             description: "Monster Coder (Passive): Increases Base Power by 50% (to 12)",
             power: 12,
-            effect: () => { console.log("Antonio Ability", this.state) },
+            effect: (input) => { this.setState({ power: this.state.power + input.power }) },
             rally: (input) => {
                 input.rallied = true
                 this.setState({ friends: this.state.friends + 1 })
