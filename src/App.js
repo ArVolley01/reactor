@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import OptionBox from "./OptionBox";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <video autoPlay muted loop id="background-video">
+        <source src="clouds3.mp4" type="video/mp4"/>
+      </video>
+      <header>Reactor</header>
+      <hr></hr>
+      <div id="option-menu">
+        <OptionBox style={{display: "grid", height:"250px", width:'250px', marginLeft: "50px", borderStyle: "solid"}}>
+          <OptionBox style={{ height: "50px", width: '50px', borderStyle: "solid" }} />
+          <OptionBox style={{ height: "50px", width: '50px', borderStyle: "solid" }} />
+          <OptionBox style={{ height: "50px", width: '50px', borderStyle: "solid" }} />
+          <OptionBox style={{ height: "50px", width: '50px', borderStyle: "solid" }} />
+        </OptionBox>
+      </div>
     </div>
   );
 }
