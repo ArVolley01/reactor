@@ -76,11 +76,14 @@ class GameState extends React.Component {
             name: "Michael",
             blurb: "Drill (A), Health & Wellness (R)",
             // eslint-disable-next-line no-multi-str
-            description: "Drill (Active): Adds 2 tasks that buff all coders when completed. \
-                                            Health and Wellness (On Rally): When rallied, adds 'skip lunch' to the shop.",
+            description: "Drill (Active): \
+                    Adds 1 Drill tasks which give points when completed. \
+                    Health and Wellness (On Rally): When rallied, adds 'skip lunch' to the shop.",
             power: 0,
             effect: () => {
-                console.log("Michael Ability:", this.state)
+                this.setState({
+                    tasks: [...this.state.tasks, new Task(this.allTasks[1])]
+                })
             },
             rally: (input) => {
                 input.rallied = true
@@ -92,7 +95,7 @@ class GameState extends React.Component {
             blurb: "Diagnose (A)",
             description: "Diagnose (Active): Remove up to 3 bugs from random friendly coders",
             power: 9,
-            effect: () => { console.log("Ashwin Ability", this.state) },
+            effect: (input) => { this.setState({ power: this.state.power + input.power }) },
             rally: (input) => {
                 input.rallied = true
                 this.setState({ friends: this.state.friends + 1 })
@@ -131,8 +134,8 @@ class GameState extends React.Component {
         }),
         new Coder({
             name: "Tomer",
-            blurb: "Monster Coder (P)",
-            description: "Monster Coder (Passive): Increases Base Power by 50% (to 12)",
+            blurb: "MONSTER CODER (P)",
+            description: "MONSTER CODER (Passive): Increases Base Power by 50% (to 12)",
             power: 12,
             effect: (input) => { this.setState({ power: this.state.power + input.power }) },
             rally: (input) => {
@@ -168,6 +171,23 @@ class GameState extends React.Component {
             description: "When completed, gain 2 points",
             timer: 2,
             power: 10,
+            effect: (input) => {
+                if (this.state.power >= input.power) {
+                    this.setState({
+                        tasks: this.state.tasks.filter((element) => { return element !== input }),
+                        power: this.state.power - input.power,
+                        points: this.state.points + 2
+                    })
+                } else {
+                    alert("Not enough power!")
+                }
+            }
+        },
+        {
+            blurb: "Drill",
+            description: "When completed, gain 2 points",
+            timer: 1,
+            power: 5,
             effect: (input) => {
                 if (this.state.power >= input.power) {
                     this.setState({
