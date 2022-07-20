@@ -1,24 +1,8 @@
 import './App.css';
-import OptionBox from "./OptionBox";
+import GameState from './GameState';
 
-function App() {
-  return (
-    <div className='App'>
-      <video autoPlay muted loop id="background-video">
-        <source src="clouds3.mp4" type="video/mp4"/>
-      </video>
-      <header>Reactor</header>
-      <hr></hr>
-      <div id="option-menu">
-        <OptionBox style={{display: "grid", height:"250px", width:'250px', marginLeft: "50px", borderStyle: "solid"}}>
-          <OptionBox style={{ height: "50px", width: '50px', borderStyle: "solid" }} />
-          <OptionBox style={{ height: "50px", width: '50px', borderStyle: "solid" }} />
-          <OptionBox style={{ height: "50px", width: '50px', borderStyle: "solid" }} />
-          <OptionBox style={{ height: "50px", width: '50px', borderStyle: "solid" }} />
-        </OptionBox>
-      </div>
-    </div>
-  );
+const App = () => {
+  return (<GameState initShop={[0, 0]} initTask={[0]}/>);
 }
 
 export default App;
