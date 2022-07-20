@@ -156,9 +156,10 @@ class GameState extends React.Component {
         }),
         new Coder({
             name: "Mark",
-            blurb: "MONSTER CODER (P)",
-            description: "MONSTER CODER (Passive): Increases Base Power by 50% (to 12)",
-            power: 12,
+            blurb: "Grab Drinks (R), Buy a Round (A)",
+            description: "Grab Drinks (On Rally): Adds 1 Beer per Coder to the Shop. \
+                        Buy a Round (Active): Reduces the cost of a random Beer in the Shop to 0",
+            power: 5,
             effect: (input) => { this.setState({ power: this.state.power + input.power }) },
             rally: (input) => {
                 input.rallied = true
