@@ -143,6 +143,28 @@ class GameState extends React.Component {
                 this.setState({ friends: this.state.friends + 1 })
             }
         }),
+        new Coder({
+            name: "Zach",
+            blurb: "Distraction (A/O)",
+            description: "Reduces power output this turn, but improves mental health",
+            power: 5,
+            effect: (input) => { this.setState({ power: this.state.power + input.power }) },
+            rally: (input) => {
+                input.rallied = true
+                this.setState({ friends: this.state.friends + 1 })
+            }
+        }),
+        new Coder({
+            name: "Mark",
+            blurb: "MONSTER CODER (P)",
+            description: "MONSTER CODER (Passive): Increases Base Power by 50% (to 12)",
+            power: 12,
+            effect: (input) => { this.setState({ power: this.state.power + input.power }) },
+            rally: (input) => {
+                input.rallied = true
+                this.setState({ friends: this.state.friends + 1 })
+            }
+        }),
     ]
 
     allShop = [
